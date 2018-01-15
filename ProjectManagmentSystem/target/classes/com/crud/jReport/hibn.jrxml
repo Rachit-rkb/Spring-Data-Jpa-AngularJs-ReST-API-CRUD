@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="hibn" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc0b2e9e-6d4c-4d25-9d75-90b8ede36704">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="21"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="project_id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * FROM developersDETAILS , projectDetails where developersdetails.pid=$P{project_id}]]>
+	</queryString>
+	<field name="did" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dpos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="start_date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="148" y="30" width="259" height="33" uuid="d3f50ade-e3c1-4605-b814-f58a5a379b3f"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEVELOPER'S REPORT]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="103" splitType="Stretch">
+			<textField>
+				<reportElement x="91" y="25" width="100" height="20" uuid="22188fa0-b5bf-4ded-a998-3af94c5ce62b"/>
+				<textFieldExpression><![CDATA[$F{pid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="91" y="52" width="100" height="20" uuid="b8d1944c-08fd-4b6a-bfc1-4a2de65c675c"/>
+				<textFieldExpression><![CDATA[$F{pname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="26" width="100" height="20" uuid="278ea1ca-213e-4b16-abf3-2515079ad814"/>
+				<textFieldExpression><![CDATA[$F{start_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="52" width="100" height="20" uuid="fccd4976-0cb8-4a11-9e1e-ae4bf324eb99"/>
+				<textFieldExpression><![CDATA[$F{end_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="26" width="78" height="20" uuid="6ce1bb8a-64ba-43a5-a844-caea2f400c6a"/>
+				<text><![CDATA[Project ID :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="52" width="78" height="20" uuid="8f34f0c7-1fca-47c6-aa1a-659c3ad6c94b"/>
+				<text><![CDATA[End Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="52" width="78" height="20" uuid="d0b79f3a-129c-4c27-ad88-515c805a951a"/>
+				<text><![CDATA[Project Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="26" width="78" height="20" uuid="a4525afa-b093-45ff-91a8-cdb2cb8fceac"/>
+				<text><![CDATA[Start Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="9" width="100" height="20" uuid="1226b23d-4c37-496b-8df7-ce4454322676"/>
+				<textElement textAlignment="Center">
+					<font size="14" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Project Details]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="56" y="2" width="100" height="20" uuid="b3d51041-d092-45d4-95a5-907a306bc0f8"/>
+				<text><![CDATA[Developer Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="229" y="2" width="100" height="20" uuid="73827470-da03-4eb5-9837-2175bffc219c"/>
+				<text><![CDATA[Developer Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="401" y="0" width="116" height="20" uuid="69aab7e0-bfda-45bc-b8c4-6971d6ccaa04"/>
+				<text><![CDATA[Developer Designation]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="56" y="5" width="100" height="20" uuid="d1bfeb93-b6ec-4c5c-9e0c-f8438b9341fb"/>
+				<textFieldExpression><![CDATA[$F{did}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="229" y="5" width="100" height="20" uuid="8da2a5d2-b9e4-4d0c-a929-61e159034712"/>
+				<textFieldExpression><![CDATA[$F{dname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="401" y="4" width="100" height="20" uuid="25e05703-816b-43eb-a4ba-510429758741"/>
+				<textFieldExpression><![CDATA[$F{dpos}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

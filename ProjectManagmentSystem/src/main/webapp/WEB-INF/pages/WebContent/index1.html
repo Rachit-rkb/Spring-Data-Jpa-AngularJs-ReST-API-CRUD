@@ -1,0 +1,64 @@
+
+<html lang="en-US" >
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="https://raw.githubusercontent.com/michaelbromley/angularUtils/master/src/directives/pagination/dirPagination.js"></script>
+ <script src="lib/angular.min.js"></script>
+  <script src="lib/dirPagination.js"></script>
+ </head>
+<body>
+
+<div ng-app="myApp">
+
+	<h2 class="text-center" style="color:Blue">Project Management System</h2>
+
+<br>
+<form>
+	<h4 style="color:red">Search Box</h4>
+	&nbsp &nbsp<input type="text" ng-model="search" placeholder="Search here">
+	
+	</form>
+    <div class="container" ng-controller="CountryCtrl">
+		<table class="table table-bordered">
+		    <thead>
+				<tr>
+					<th ng-click="sort('code')">Code
+        <span class="glyphicon sort-icon" ng-show='sortKey=='code' ng-class="('glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse)"></span>      
+        </th>
+		              <th>Country</th>
+                    <th>Population</th>
+				</tr>
+		    </thead>
+			<tbody>
+				<tr dir-paginate="value in countries | itemsPerPage: 2|filter:search |orderBy:sortKey:reverse">
+					 <td>{{value.pid}}</td>
+		            <td><a href="json.html">{{value.pname}}</a></td>
+                      <td>{{value.sdate}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<dir-pagination-controls 
+			boundary-links="true" 
+			direction-links="true" >
+			</dir-pagination-controls>
+	</div>
+
+</div>
+
+<script>
+var app = angular.module('myApp',['angularUtils.directives.dirPagination']);
+
+app.controller('CountryCtrl', function ($scope, $http){
+    $http.post('file1.json').success(function(data) {
+      $scope.countries = data;
+    });
+    $scope.sort=function(keyname){
+    	$scope.sortKey=keyname;
+    	$scope.reverse=!$scope.reverse;
+    }
+  });
+</script>
+
+</body>
+</html> 

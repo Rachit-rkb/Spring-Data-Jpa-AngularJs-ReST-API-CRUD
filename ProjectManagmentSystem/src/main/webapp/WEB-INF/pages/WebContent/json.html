@@ -1,0 +1,52 @@
+<html ng-app ="countryApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js JSON Fetching Example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script> 
+	 <script src="lib/angular.min.js"></script>
+	  <script src="lib/dirPagination.js"></script>
+    <script>
+      var countryApp = angular.module('countryApp', []);
+      countryApp.controller('CountryCtrl', function ($scope, $http){
+        $http.get('countries.json').success(function(data) {
+          $scope.countries = data;
+        });
+        
+        $scope.sort=function(keyname){
+        	$scope.sortKey=keyname;
+        	$scope.reverse=!$scope.reverse;
+        }
+      });
+    </script>
+  </head>
+  <body >
+	<h2>Angular.js JSON Fetching Example</h2>
+	<form>
+	<lable>Search</lable>
+	<input type="text" ng-model="search" placeholder="search">
+	
+	</form>
+	<div ng-controller="CountryCtrl">
+    <table>
+      <tr>
+        <th ng-click="sort('code')">Code
+        <span class="glyphicon sort-icon" ng-show='sortKey=='code' ng-class="('glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse)"></span>      
+        </th>
+		<th>Country</th>
+        <th>Population</th>
+      </tr>
+      <tr ng-repeat="country in countries | filter:search | orderBy:sortKey:reverse">
+        <td>{{country.code}}</td>
+		<td><a href="index1.html">{{country.name}}</a></td>
+        <td>{{country.population}}</td>
+      </tr>
+    </table>
+    <dir-pagination-controls 
+			boundary-links="true" 
+			direction-links="true" >
+			</dir-pagination-controls>
+	</div>
+    </div>
+  </body>
+</html>
